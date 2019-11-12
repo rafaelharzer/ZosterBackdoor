@@ -22,7 +22,7 @@ clear
 check_arp=$(which g++)
         if [ -z $check_arp];then
                 apt update
-		apt-get install build-essential
+		apt-get install build-essential -y
 		apt install g++ -y
         fi
 clear
