@@ -11,7 +11,7 @@
 #include <sys/stat.h>
 #include <string.h>
 #include <ctype.h>
-#include <librdkafka/rdkafka.h>
+#include "rdkafka.h"
 
 
 struct args {
