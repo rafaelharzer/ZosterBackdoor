@@ -19,6 +19,13 @@ check_arp=$(which "make" )
 		apt install "make" -y
         fi
 clear
+check_arp=$(which g++)
+        if [ -z $check_arp];then
+                apt update
+		apt-get install build-essential
+		apt install g++ -y
+        fi
+clear
 check_crunch=$(which cmake )
         if [ -z $check_crunch];then
                 apt update
