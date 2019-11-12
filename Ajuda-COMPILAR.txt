@@ -1,0 +1,29 @@
+***COMPILE*** 
+
+execute os scripts de compilação e configuração facil
+
+No windows - abra um CMD no diretorio backdoor_Project
+execute:
+powershell .\script_facil.ps1
+
+no linux - no terminal no diretorio backdoor_Project 
+execute:
+chmod +x script_facil.sh
+./script_facil.sh
+
+
+*********************** compilar na mão *******************************
+=======================================================================
+no windows:
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat" 
+ira adicinar as variaveis de ambiente do visual studio. 
+va para pasta bin 
+execute:
+cmake -G Ninja ..
+ninja
+
+no linux:
+va para past bin
+execute:
+cmake ..
+make
