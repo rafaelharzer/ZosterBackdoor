@@ -3,9 +3,9 @@
 ########################################
 
 set home=%cd%
+
 function compilarControlador(){
 echo ""
-$nomeBackdoor = Read-Host -Prompt 'Nome da Backdoor'    
 $PSDefaultParameterValues['*:Encoding'] = 'utf8'
 echo 'cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 set(PROJECT_VERSION "1.0.0")
@@ -27,7 +27,7 @@ Remove-Item * -Force -Recurse
 gci -recurse -filter "vcvars64.bat" -Path "${discoLocal}:\" | foreach-object {
 $place_path = $_.directory}
 CMD /C """$place_path\vcvars64.bat"" && cmake -G Ninja .. && ninja"
-mv backdoor.exe ../resultado/controlador.exe 
+mv controlador.exe ../resultado/controlador.exe 
 cd ..
 echo "Seu controlador esta na pasta resultado"
 
