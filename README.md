@@ -9,6 +9,12 @@ Zoster é uma Backdoor desenvolvida em C/C++ que permite uma conexão estável u
   Zoster foi planejado para garantir uma conexão estável entre o controlador e a maquina alvo, utilizando um broker Kafka, que é um serviço intermediário que ira gerenciar as trocas de informação entre o controlador e a máquina que é controlada, garantindo assim maior estabilidade e uma vantagem de não precisar liberar portas em firewall, a conexão passa despercebida pelos firewalls tanto na parte do controlador quanto na máquina infectada pela Backdoor.
 <br> <br>
   Zoster foi planejado para garantir uma conexão estável entre o controlador e a maquina alvo, utilizando um broker Kafka, que é um serviço intermediário que ira gerenciar as trocas de informação entre o controlador e a máquina que é controlada, garantindo assim maior estabilidade e uma vantagem de não precisar liberar portas em firewall, a conexão passa despercebida pelos firewalls tanto na parte do controlador quanto na máquina infectada pela Backdoor. <br>
+  
+  Zoster conta com um controlador que é a ferramenta que e comunica diretamente com as Backdoors.<br> Atualmente foi implementado neste controlador as seguintes funções:
+ * Shell reverso, possibilitando executar comandos ou scripts no terminal.
+ * Envio de arquivos.
+ * Download de arquivos.
+ 
 ##### Zoster foi desenvolvido e testado nas plataformas Windows e Linux. 
 
 ### Requisitos:  <br>
@@ -49,3 +55,12 @@ para executar a backdoor no windows basta em um terminal executar ela assando o 
 No linux basta executar a backdor que ja subira o daemon. ex:
 > ./backdoor
 
+Para poder controlar a backdoor existe o controlador, é a ferramenta de comunicação que deve ser compilada de acordo com seu sistema.
+Para poder executar o controlador siga o ex:<br>
+no linux:
+> ./controlador localhost:9092 maquina_01
+
+no windows:
+> controlador.exe localhost:9092 maquina_01
+
+O primeiro argumento são as informações para conectar no servidor broker kafka, a porta padrão é 9092. O segundo parametro é o ID da maquina configurado na hora da compilação usando o script facil, esse ID é o que identifica a maquina pelo qual você deseja se conectar. 
