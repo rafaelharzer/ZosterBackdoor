@@ -30,7 +30,7 @@ Para instalar o sistema de mensageria kafka voce pode seguir tutoriais faceis co
 Ou simplesmente suba um docker: [Docker facil do kafka](https://github.com/lensesio/fast-data-dev) <br>
 ##### ex do docker: 
 Instale o docker e execute: <br>
->docker run --rm -p 2181:2181 -p 3030:3030 -p 8081-8083:8081-8083 \ -p 9581-9585:9581-9585 -p 9092:9092 -e ADV_HOST=192.168.99.100 \ lensesio/fast-data-dev:latest
+>docker run --rm -p 2181:2181 -p 3030:3030 -p 8081-8083:8081-8083  -p 9581-9585:9581-9585 -p 9092:9092 -e ADV_HOST=192.168.99.100  lensesio/fast-data-dev:latest
 
 #### 2. Escolha sua plataforma e instale:<br>
 * **Windows:** <br> 
