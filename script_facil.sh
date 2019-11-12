@@ -62,7 +62,7 @@ compilarBackdoor(){
 echo ""    
 read -p "Nome para a Backdoor: " nomeBackdoor
 echo 'cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
-set (CMAKE_CXX_STANDARD 11)
+set(PROJECT_VERSION "1.0.0")
 
 execute_process(COMMAND git clone https://github.com/edenhill/librdkafka.git)
 execute_process(COMMAND git checkout tags/v1.2.1 WORKING_DIRECTORY librdkafka)
