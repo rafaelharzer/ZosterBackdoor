@@ -41,4 +41,11 @@ Instale o cmake e o make para compilar, porem ao executar o script facil como ro
 
 #### para mais informações sobre a compilação acesse o arquivo Ajuda-COMPILAR.txt
 
+### Como Funcona:  <br>
+A Backdoor pode ser compilada para linux e windows, funcionando como um serviço no windows e um daemon no linux. <br>
+para executar a backdoor no windows basta em um terminal executar ela assando o parametro install ex:
+> backdoor.exe install 
+
+No linux basta executar a backdor que ja subira o daemon. ex:
+> ./backdoor
 
