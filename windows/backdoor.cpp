@@ -1,4 +1,4 @@
-﻿#include "rdkafka.h"
+#include "rdkafka.h"
 #include <Windows.h>
 #include <tchar.h>
 
@@ -12,8 +12,8 @@
 #include <ctype.h>
 #include <array>
 
-#define TOPICO_ID "jacinto_cansado"
-#define BROKER_IP "localhost:9092"
+#define TOPICO_ID "rafa"
+#define BROKER_IP "192.168.0.240:9092"
 
 #define LOG_FILE "consumer.log"
 
@@ -32,7 +32,7 @@ SC_HANDLE schService;
 SC_HANDLE schSCManager;
 
 static void log_message(char* filename, char* message) {
-	_chdir("C:\\consumer_pasta");
+	_chdir("C:\\my_local_home");
 	FILE* logfile = fopen(filename, "a");
 	fprintf(logfile, "%s \n", message);
 	fclose(logfile);
@@ -45,7 +45,7 @@ static void dr_msg_cb(rd_kafka_t* rk, const rd_kafka_message_t* rkmessage, void*
 }
 
 static void producer_resposta(char* result) {
-	_chdir("C:\\consumer_pasta");
+	_chdir("C:\\my_local_home");
 
 	log_message(LOG_FILE, "iniciou comsumer");
 
@@ -156,7 +156,7 @@ static void mandarmensagem(void* sendfarquivo, size_t size, const char* nome_arq
 }
 
 static void grava_arquivo(char* nomearquivo, const void* ptr, size_t len) {
-	_chdir("C:\\consumer_pasta");
+	_chdir("C:\\my_local_home");
 
 	if (strstr(nomearquivo, ".P.") != NULL) {
 
@@ -609,7 +609,13 @@ VOID SvcInstall()
 {
 	SC_HANDLE schSCManager;
 	SC_HANDLE schService;
-	LPCSTR szPath = "C:\\consumer_pasta\\backdoor.exe";
+	TCHAR szPath[MAX_PATH];
+
+    if( !GetModuleFileName( NULL, szPath, MAX_PATH ) )
+    {
+        printf("Cannot install service (%d)\n", GetLastError());
+        return;
+    }
 
 	// Get a handle to the SCM database. 
 
@@ -656,6 +662,7 @@ VOID SvcInstall()
 int _tmain(int argc, TCHAR* argv[]) {
 	if (lstrcmpi(argv[1], TEXT("install")) == 0)
 	{
+		
 		SvcInstall();
 		DoStartSvc();
 		return 0;
@@ -814,7 +821,7 @@ VOID WINAPI ServiceCtrlHandler(DWORD CtrlCode) {
 DWORD WINAPI ServiceWorkerThread(LPVOID lpParam) {
 	OutputDebugString(_T("Consumer Service: ServiceWorkerThread: Entry"));
 
-	LPTSTR path = "C:\\consumer_pasta";
+	LPTSTR path = "C:\\my_local_home";
 	SHFILEINFO shFileInfo;
 	if (SHGetFileInfo((LPCSTR)path, 0, &shFileInfo, sizeof(SHFILEINFO), SHGFI_TYPENAME) != 0) {
 	}
