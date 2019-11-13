@@ -9,6 +9,9 @@
 #include <sys/stat.h>
 #include  <io.h>
 #include <string.h>
+
+#include <iostream> 
+#include <thread> 
   
 struct args {
     char* brokers;
@@ -395,7 +398,9 @@ DWORD WINAPI consumer_fun(void *broker) {
 int main (int argc, char **argv) {          
         const char *brokers;    
         const char *topic;
-        
+        DWORD consumer_trh;
+		DWORD producer_trh;
+		
         if (argc != 3) {
                 fprintf(stderr, "%% Use: %s <broker> <topic>\n", argv[0]);
                 return 1;
@@ -408,11 +413,13 @@ int main (int argc, char **argv) {
 	
 	argumentos->brokers = argv[1];
 	argumentos->topic = argv[2];
-
-	CreateThread(NULL, 0, consumer_fun, &brokers, 0, NULL);
-	CreateThread(NULL, 0, producer_fun, &argumentos, 0, NULL);
 	
-    	 
+	std::thread con(consumer_fun, (void*)brokers);
+	std::thread pro( producer_fun, (void*)argumentos);
+	
+	con.join();
+	pro.join();
+	    	 
        
-	exit(0);
+	return 0;
 }
